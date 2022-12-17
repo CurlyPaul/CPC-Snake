@@ -1,7 +1,10 @@
 # SNAKE Amstrad CPC #
 
-Very simple implementation of snake for the CPC, inspired by the awesome Coding Train
+https://youtu.be/bfBLzvPjAX0
 
+Very simple implementation of snake for the CPC, inspired by this awesome video from The Coding Train
+
+https://www.youtube.com/watch?v=7r83N3c2kPw&t=1184s
 
 ## Controls
 
@@ -42,10 +45,15 @@ Increases the length of the snake by one
 Draws a new piece of food
 Adds a new S to the head of the snake
 
-### 5000 Move Snake
+### 5000 Push position arrays
 Moves all of values in X% and Y% down by one position and then adds a new S to the head of the snake 
 
-### 7000 
+### 6000 Calculate New Head Position
+Applies the value of `direction` to the current coordinates and adds new values to the x%,y% arrays
+
+### 7000 Increment snake
+Removes the last S in the snake from the screen
+Pushes the positional arrays
 
 ### 8000 Game Over
 
