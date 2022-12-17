@@ -1,13 +1,13 @@
 # SNAKE Amstrad CPC #
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=bfBLzvPjAX0
-" target="_blank"><img src="http://img.youtube.com/vi/9Qd0ZVBiQME/0.jpg" 
+" target="_blank"><img src="http://img.youtube.com/vi/bfBLzvPjAX0/0.jpg" 
 alt="Version 0.1" width="240" height="180" border="10" /></a>
 
 Very simple implementation of snake for the CPC, inspired by this awesome video from The Coding Train
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=7r83N3c2kPw&t=1184s
-" target="_blank"><img src="http://img.youtube.com/vi/9Qd0ZVBiQME/0.jpg" 
+" target="_blank"><img src="http://img.youtube.com/vi/7r83N3c2kPw&t=1184s/0.jpg" 
 alt="Version 0.1" width="240" height="180" border="10" /></a>
 
 ## Controls
