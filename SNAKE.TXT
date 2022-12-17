@@ -1,0 +1,69 @@
+10 MODE 1
+20 INK 0,12
+30 INK 1,19
+40 INK 2,0
+50 INK 4,6
+60 BORDER 12
+70 PAPER 1
+80 PEN 2
+90 CLS
+100 DIM x%(100) : DIM y%(100)
+110 fx = 1 : fy = 1
+120 GOSUB 3000 : ' place new food
+130 w = 40 : h = 25
+140 x%(0)=20 : y%(0)=12
+150 LET l = 1
+160 direction = 1
+1000 REM start draw loop
+1010 GOSUB 2000 : ' check keys
+1020 IF x%(l-1)=fx AND y%(l-1)=fy THEN GOSUB 4000 ELSE GOSUB 7000
+1030 IF x%(l-1) = 0 OR x%(l-1) > w OR y%(l-1) = 0 OR y%(l-1) > h THEN GOTO 8000
+1040 LOCATE x%(l-1),y%(l-1)
+1050 PRINT CHR$(83)
+1060 FOR i = 0 TO 100 : NEXT i
+1070 GOTO 1000 : ' restart loop
+2000 REM check keys
+2010 IF INKEY(61)=0 THEN direction = 2
+2020 IF INKEY(69)=0 THEN direction = 4
+2030 IF INKEY(60)=0 THEN direction = 3
+2040 IF INKEY(59)=0 THEN direction = 1
+2050 RETURN
+3000 REM place new food
+3010 fx = INT(RND(1)*38)+1
+3020 fy = INT(RND(1)*25)+1
+3030 LOCATE fx,fy
+3040 PEN 3:PRINT CHR$(70):PEN 2
+3050 RETURN
+4000 REM feed snake
+4010 l=l+1
+4020 GOSUB 6000 :' Calculate head position
+4030 GOSUB 3000 :' place food
+4040 RETURN
+5000 REM Push postition arrays
+5010 IF l=1 THEN GOTO 6000
+5020 FOR i=0 TO l-1
+5030 x%(i)=x%(i+1)
+5040 y%(i)=y%(i+1)
+5050 NEXT i
+5060 GOSUB 6000
+5070 RETURN
+6000 REM calulate new head pos
+6010 IF l>1 THEN x%(l-1)=x%(l-2) : y%(l-1)=y%(l-2)
+6020 IF direction=1 THEN y%(l-1)=y%(l-1)-1 : RETURN
+6030 IF direction=2 THEN x%(l-1)=x%(l-1)+1 : RETURN
+6040 IF direction=3 THEN y%(l-1)=y%(l-1)+1 : RETURN 
+6050 IF direction=4 THEN x%(l-1)=x%(l-1)-1 : RETURN
+6060 RETURN
+7000 REM Increment snake
+7010 LOCATE x%(0),y%(0)
+7020 PRINT " "
+7030 GOSUB 5000 :' Push positional arrays
+7040 RETURN
+8000 REM game over
+8010 a$=INKEY$
+8020 WHILE INKEY$<>"":WEND
+8030 PRINT "you died"
+8040 PRINT "press any key to play again"
+8050 CALL &BB18
+8060 CLS
+8070 GOTO 110
